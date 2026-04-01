@@ -30,6 +30,22 @@ class Sudoku:
     def from_str(cls, s: str) -> "Sudoku":
         sudoku = {}
         # YOUR CODE HERE
+        which_row=1
+        #.splitlines() is pretty cool, automatically takes a string with mutiple lines and makes a list including each line
+        lines=s.splitlines()
+        #increment through each line in lines, skip all blank lines
+        for i in lines:
+                if i.strip()=="":
+                        continue
+                which_column = 1
+                split_lines = i.split()
+                #go through and ignore each empty cell
+                for a in split_lines:
+                        if a != "-":
+                                sudoku[(which_row, which_column)]=int(a)
+                        #increments to change the rows and columns we are in
+                        which_column +=1
+                which_row += 1
         return cls(sudoku)
 
     @classmethod
